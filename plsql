@@ -148,5 +148,49 @@ END;
 /
 
 
+#############################################
 
+DECLARE
+vari NUMBER(8,2) := -3.14;
+text varchar2(30);
+BEGIN
+IF vari <3.14 THEN
+text:='Very Low';
+ELSIF vari between -3.14 and 3.14 THEN
+text:='low';
+ELSIF vari between 3.14 and 100 THEN
+text:='high';
+ELSE
+text:='very high';
+END IF;
+DBMS_OUTPUT.PUT_LINE('variable is '||text);
+END;
+
+/*
+Output:
+variable is Very Low
+*/
+
+/* By using searched case  */
+
+DECLARE
+vari NUMBER(8,2) := 100;
+text varchar2(30);
+BEGIN
+CASE WHEN vari <3.14  THEN
+text:='very low';
+WHEN vari between -3.14 and 3.14 THEN
+text:='low';
+WHEN vari between 3.14 and 100 THEN
+text:='high';
+ELSE
+text:='very high';
+END CASE;
+
+DBMS_OUTPUT.PUT_LINE('variable is '||text);
+END;
+
+/*
+Output:
+variable is high
 
